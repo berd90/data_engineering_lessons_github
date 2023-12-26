@@ -1,0 +1,3 @@
+user_name,password,host
+etl_user,"12,3",127.0.0.1
+test_user,456,127.0.0.2

@@ -1,0 +1,5 @@
+- host: 127.0.0.1
+  password: '123'
+  user_name: etl_user
+- password: '456'
+  user_name: test_user
