@@ -117,11 +117,11 @@ join d_users U on
 
 select id, created, full_name, row_number() OVER(partition by id order by created desc) as n
 from d_users
-	where created <= '2022-02-24';
+where created <= '2022-02-24';
 
 select id, created, full_name, row_number() over () as n
 from d_users
-	where created <= '2022-02-24';
+where created <= '2022-02-24';
 
 
 --Самый правильный вариант - работает как минимум втрое быстрее
@@ -129,6 +129,6 @@ select *
 from (
 	select id, created, full_name, row_number() OVER(partition by id order by created desc) as N
 	from d_users
-		where created <= '2022-02-24') T
+	where created <= '2022-02-24') T
 where T.N = 1
 ;
