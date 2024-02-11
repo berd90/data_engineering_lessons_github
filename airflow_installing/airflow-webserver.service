@@ -1,0 +1,33 @@
+[Unit]
+
+Description=Airflow webserver daemon
+
+After=network.target postgresql.service
+
+Wants=postgresql.service
+
+
+
+[Service]
+
+EnvironmentFile=/etc/sysconfig/airflow
+
+User=root
+
+Group=root
+
+Type=simple
+
+ExecStart=/usr/local/bin/airflow webserver --pid /airflow/airflow-webserver.pid
+
+Restart=on-failure
+
+RestartSec=5s
+
+PrivateTmp=true
+
+
+
+[Install]
+
+WantedBy=multi-user.target
