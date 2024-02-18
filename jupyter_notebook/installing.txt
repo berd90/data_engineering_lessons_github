@@ -1,0 +1,40 @@
+Устанавливаем:
+pip3 install notebook
+
+Генерируем конфиг
+jupyter notebook --generate-config
+
+файл с конфигом будет в папке пользователя, из под которого вы создавали конфиг - надо будет перейти в директорию .jupyter - она скрытая, можете её даже не увидеть сразу.
+/root/.jupyter/    файл jupyter_notebook_config.py
+
+В конфиг файл добавить:
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.allow_remote_access = True
+c.NotebookApp.allow_root = True
+c.NotebookApp.port = 8989
+c.NotebookApp.open_browser = True
+
+устанавливаем пароль
+jupyter notebook password
+
+разово запустить можно так:
+jupyter notebook
+
+открывать в браузере по адресу
+http://ip адрес:порт/
+http://194.87.102.3:8989/
+
+
+
+
+Дальше надо создать папку /jupyter_notebook_files/ в корне
+После чего скопировать файл с описанием демона в папку /usr/lib/systemd/system/
+
+jupyter-notebook - так будет демон называться.
+
+после чего последовательно запустить
+systemctl daemon-reload
+systemctl enable jupyter-notebook
+systemctl restart jupyter-notebook
+systemctl status jupyter-notebook

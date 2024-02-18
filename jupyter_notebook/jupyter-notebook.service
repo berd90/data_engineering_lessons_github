@@ -1,0 +1,26 @@
+[Unit]
+
+Description=Airflow scheduler daemon
+
+After=network.target 
+
+[Service]
+WorkingDirectory=/jupyter_notebook_files/
+
+User=root
+
+Group=root
+
+Type=simple
+
+ExecStart=/usr/local/bin/jupyter notebook
+
+Restart=always
+
+RestartSec=10s
+
+
+
+[Install]
+
+WantedBy=multi-user.target
