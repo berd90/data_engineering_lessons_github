@@ -1,6 +1,5 @@
 
 
-
 select id, city_name
 from d_cities
 
